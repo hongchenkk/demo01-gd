@@ -23,6 +23,6 @@ public class User {
 				.account("ch")
 				.age(28).build();
 		
-		log.info("{}", user);
+		log.info("user:{}", user);
 	}
 }
