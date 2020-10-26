@@ -1,0 +1,42 @@
+package com.godink.demo01.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.godink.demo01.domain.User;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RestController
+public class IndexRestController {
+	
+	@Value("${user.password}")
+	private String password;
+	
+	@Value("${user.name}")
+	private String name;
+	
+	@Value("${user.pn}")
+	private String pn;
+
+	@GetMapping("/index")
+	public String index(@RequestParam String name) {
+		return name;
+	}
+	
+	@PostMapping("/user")
+	public ResponseEntity<User> getBlog(){
+		log.info("pn: {}", pn);
+		 User user = User.builder().name(name).password(password).build();
+		 return new ResponseEntity<User>(user, HttpStatus.OK);
+	}
+}
