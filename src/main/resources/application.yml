@@ -1,0 +1,18 @@
+server:
+ port: 22080
+ servlet:
+  context-path: /gd/demo01
+
+#define a user
+user:
+ name: chenhong
+ password: encryStr
+ pn: ${user.name},${user.password}
+
+logging:
+  file:
+    path: D:\logs
+  config: classpath:logback-spring.xml
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c %m%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c %m%n"
