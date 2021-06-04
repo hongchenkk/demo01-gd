@@ -36,6 +36,8 @@ public class IndexRestController {
 
 	@GetMapping("/index")
 	public String index(@RequestParam String name) {
+		log.info("info log");
+		log.debug("debug log");
 		return name;
 	}
 	

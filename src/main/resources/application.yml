@@ -16,3 +16,8 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c %m%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c %m%n"
+    
+    
+    
+  level:
+    root: debug
