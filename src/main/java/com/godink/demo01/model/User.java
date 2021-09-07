@@ -1,4 +1,4 @@
-package com.godink.demo01.domain;
+package com.godink.demo01.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,6 +16,7 @@ public class User {
 	private String account;
 	private Integer age;
 	private String password;
+	private boolean isOk;
 	
 	public static void main(String[] args) {
 		User user = User.builder()

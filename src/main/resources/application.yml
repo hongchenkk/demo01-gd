@@ -2,8 +2,17 @@ server:
  port: 22080
  servlet:
   context-path: /gd/demo01
+  
+#测试java属性配置 
+com:
+ hongchen:
+  title: this is tile
+  desc: 快乐的生活和学习着
+  roles:
+    -user
+    -admin
 
-#define a user
+#定义一个用户配置
 user:
  name: chenhong
  password: encryStr
@@ -16,8 +25,66 @@ logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c %m%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%-5p] %c %m%n"
-    
-    
-    
   level:
     root: debug
+    
+#异步任务配置
+#spring:
+#  task:
+#    execution:
+#      thread-name-prefix:  Ecms-Async-Task-
+#      pool:
+#        core-size: 8
+#        max-size: 16
+#        keep-alive: 10s
+#        queue-capacity: 100
+
+#任务调度配置
+#spring:
+#  task:
+#    scheduling:
+#      pool:
+#        size: 16
+#      thread-name-prefix: Ecms-Scheduled-Task-
+   
+   
+#配置rabbitmq
+spring:
+  rabbitmq:
+    host: 10.0.2.33
+    port: 5672
+    username: ch01demo
+    password: 123456
+    virtual-host: /ch01test
+    #支持发布确认
+    publisher-confirms: true
+    #支持发布返回
+    publisher-returns: true
+    listener:
+      simple:
+        #采用手动应答
+        acknowledge-mode: manual
+        #当前监听容器数
+        concurrency: 1
+        #最大数
+        max-concurrency: 1
+        #是否支持重试
+        retry:
+          enabled: true
+          
+#目前本地的Run Configure里面配置的环境是dev  
+#目前配的Programs arguments:--debug logfile.txt --paname="chong" --palike=hob
+#因debug打印的太杂了，先设置Programs arguments为空
+#目前配的VM arguments: -Dcom.hongchen.name=chonnnng -Dspring.profiles.active=dev
+#激活的是dev的配置环境
+---
+spring:
+  profiles: dev
+server:
+  port: 22080
+---
+spring:
+  profiles: prod & test
+server:
+  port: 22080
+        

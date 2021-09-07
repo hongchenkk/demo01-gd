@@ -1,4 +1,4 @@
-package com.godink.demo01;
+package com.godink.demo01.other;
 
 import java.util.concurrent.TimeUnit;
 

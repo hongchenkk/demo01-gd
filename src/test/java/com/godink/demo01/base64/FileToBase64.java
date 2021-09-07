@@ -1,4 +1,4 @@
-package com.godink.demo01;
+package com.godink.demo01.base64;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
