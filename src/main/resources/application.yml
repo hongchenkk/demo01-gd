@@ -76,12 +76,16 @@ spring:
 #目前配的Programs arguments:--debug logfile.txt --paname="chong" --palike=hob
 #因debug打印的太杂了，先设置Programs arguments为空
 #目前配的VM arguments: -Dcom.hongchen.name=chonnnng -Dspring.profiles.active=dev
-#激活的是dev的配置环境
+#目前激活的是dev的配置环境
+
+#这是激活dev时才会启用的配置项，不激活不启用，激活则覆盖其他的
 ---
 spring:
   profiles: dev
 server:
   port: 22080
+  
+##这是同时激活prod和test时才会启用的配置项，不激活不启用，激活则覆盖其他的
 ---
 spring:
   profiles: prod & test
