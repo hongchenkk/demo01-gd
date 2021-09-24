@@ -22,8 +22,12 @@ class TestThreadLocal {
 			@Override
 			public void run() {
 				ThreadContext thread1Ctx = new ThreadContext("thread1");
-				log.info("tname:{}, treadLocal:{}", Thread.currentThread().getName(), ThreadContext.currentVal());
-				subm();
+				try {
+					log.info("tname:{}, treadLocal:{}", Thread.currentThread().getName(), ThreadContext.currentVal());
+					subm();
+				}finally {//用完要记得释放这个线程持有的对象，不然被放入线程池，还继续持有这个旧对象
+					thread1Ctx.close();
+				}
 			}
 		});
 		
@@ -43,6 +47,13 @@ class TestThreadLocal {
 	
 	private void subm() {
 		log.info("subm, treadLocal:{}", ThreadContext.currentVal());
+	}
+	
+	private void sub1() {
+		try (ThreadContext ctx = new ThreadContext("Bob")) {
+		    // 可任意调用UserContext.currentUser():
+		    String currentVal = ThreadContext.currentVal();
+		} // 在此自动调用UserContext.close()方法释放ThreadLocal关联对象
 	}
 
 }
