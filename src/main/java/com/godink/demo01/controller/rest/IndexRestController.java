@@ -1,4 +1,4 @@
-package com.godink.demo01.rest.controller;
+package com.godink.demo01.controller.rest;
 
 import java.util.Collection;
 import java.util.HashMap;
