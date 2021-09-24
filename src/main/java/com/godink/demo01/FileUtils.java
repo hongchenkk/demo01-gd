@@ -15,6 +15,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.poi.util.StringUtil;
+
 /**
  * 文件操作代码
  * 
@@ -71,8 +73,29 @@ public class FileUtils {
     	//filterFile();
 //    	delOldFile();
 //    	getFileNamePrefixDot();
-    	generateFieldAddSql();
-	}	
+//    	generateFieldAddSql();
+    	
+    	generateSqlField();
+	}
+    
+    public static void generateSqlField() throws IOException {
+    	String filePath1 = "D:\\tmp\\testtxt\\api1.txt";
+    	String filePath2 = "D:\\tmp\\testtxt\\api2.txt";
+    	String readFile = FileUtils.readFile(filePath1);
+    	String[] split = readFile.split("_");
+    	String newStr = "";
+    	for (int i = 0; i < split.length; i++) {
+			if(i > 0) {
+				String first = split[i].substring(0,1).toUpperCase();
+				String after = split[i].substring(1).toLowerCase();
+				newStr += first + after;
+			}else {
+				newStr += split[i];
+			}
+		}
+    	//将所有_x开头的x都变成大写的并去掉_
+    	FileUtils.writeToFile(newStr, filePath2);
+    }
     
     /** 删除文件夹下中文件名包含old.的文件*/
     public static void delOldFile() {

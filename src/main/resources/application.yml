@@ -1,3 +1,4 @@
+#访问地址为:127.0.0.1:22080/gd/demo01/
 server:
  port: 22080
  servlet:
@@ -57,7 +58,7 @@ spring:
     password: 123456
     virtual-host: /ch01test
     #支持发布确认
-    publisher-confirms: true
+    #publisher-confirms: true
     #支持发布返回
     publisher-returns: true
     listener:
@@ -71,6 +72,23 @@ spring:
         #是否支持重试
         retry:
           enabled: true
+          
+  #mysql配置
+  datasource:
+    #?后的那串要记得加，不然会报时区错误
+    url: jdbc:mysql://localhost:3306/demo01-gd?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 83956276
+    #数据源驱动类名
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #数据源驱动类型
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#mybatis配置
+mybatis:
+  #本地sql配置文件路径地址
+  mapper-locations: classpath*:mapper/**/*.xml 
+  config-location: classpath:mybatis/mybatis-config.xml
           
 #目前本地的Run Configure里面配置的环境是dev  
 #目前配的Programs arguments:--debug logfile.txt --paname="chong" --palike=hob
