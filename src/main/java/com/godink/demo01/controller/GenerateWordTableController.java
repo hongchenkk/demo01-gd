@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * 通过XWPF poi生成word文档
  * @ClassName: GenerateWordTableController 
- * @Description: TODO
  * @author: Hong.Chen
  * @date: 2021年9月7日 上午10:42:34
  */
