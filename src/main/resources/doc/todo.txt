@@ -1,0 +1,6 @@
+待做列表：
+1.集成数据库mysql的读写分离(多数据源动态切换)：https://blog.csdn.net/waynelee0809/article/details/91373780
+2.集成redis
+3.集成rabbitmq
+4.引入工作流 
+5.引入任务调度,如quartz: https://juejin.cn/post/6987630541386285092

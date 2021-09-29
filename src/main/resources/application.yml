@@ -76,7 +76,7 @@ spring:
   #mysql配置
   datasource:
     #?后的那串要记得加，不然会报时区错误
-    url: jdbc:mysql://localhost:3306/demo01-gd?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/demo01-gd?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: 83956276
     #数据源驱动类名
