@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.sun.el.stream.Optional;
-
 public class CollectoinsTest {
 	public static void main(String[] args) {
 		String text = null;
