@@ -25,6 +25,8 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 测试svg文件生成png图片
+ * 参考文档1：https://www.open-open.com/lib/view/open1414817090294.html
+ * 前端js插件，可产生svg文件的：http://fabricjs.com/
  */
 @Slf4j
 class TestSvgToPngConverter {
