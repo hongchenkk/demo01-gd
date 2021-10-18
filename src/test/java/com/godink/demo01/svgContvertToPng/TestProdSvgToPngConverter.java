@@ -1,7 +1,5 @@
 package com.godink.demo01.svgContvertToPng;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
