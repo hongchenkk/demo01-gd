@@ -239,7 +239,21 @@
 		  <version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	   	<!-- 依赖公共工具包end -->
-		
+	   	
+	   	<!-- html生成图片工具start -->
+        <dependency>
+            <groupId>gui.ava</groupId>
+            <artifactId>html2image</artifactId>
+            <version>0.9</version>
+        </dependency>
+ 
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.0.6</version>
+        </dependency>
+	   	<!-- html生成图片工具end -->
+
 	</dependencies>
 
 	<build>

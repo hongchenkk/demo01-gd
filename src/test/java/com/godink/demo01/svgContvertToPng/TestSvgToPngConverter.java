@@ -74,11 +74,52 @@ class TestSvgToPngConverter {
         }
     }
     
-    
 	@Test
 	void test2() {
 		String svgPath = "D:\\tmp\\testsvg\\test2.svg";
 		String pngPath = "D:\\tmp\\testsvg\\test2.png";
+		Map<String, String> params = new HashMap<>();
+		try {
+			convertToPngByFile(svgPath, pngPath, params);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TranscoderException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void test3() {
+		String svgPath = "D:\\tmp\\testsvg\\test5.svg";
+		String pngPath = "D:\\tmp\\testsvg\\test5.png";
+		Map<String, String> params = new HashMap<>();
+		try {
+			convertToPngByFile(svgPath, pngPath, params);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TranscoderException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void test4() {
+		String svgPath = "D:\\tmp\\testsvg\\test8.svg";
+		String pngPath = "D:\\tmp\\testsvg\\test8.png";
+		Map<String, String> params = new HashMap<>();
+		try {
+			convertToPngByFile(svgPath, pngPath, params);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TranscoderException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	void test5() {
+		String svgPath = "D:\\tmp\\testsvg\\test9.svg";
+		String pngPath = "D:\\tmp\\testsvg\\test9.png";
 		Map<String, String> params = new HashMap<>();
 		try {
 			convertToPngByFile(svgPath, pngPath, params);
@@ -101,25 +142,27 @@ class TestSvgToPngConverter {
                 System.out.println(map.get("name"+i));
                 e.setAttribute(map.get("name"+i), map.get("value"+i));
             }
-            //设置值：签发机关
-            //元素节点
-            Element e1 = doc.getElementById("qfjg");
-            //获取子节点：文本节点
-            Node text1 = e1.getChildNodes().item(0);
-            //获取文本内容
-            System.out.println(text1.getNodeValue());
-            //设置文本内容值
-            text1.setNodeValue("南山区民政局");
-
-            //设置值：有效期限
-            //元素节点
-            Element e2 = doc.getElementById("yxqx");
-            //获取子节点：文本节点
-            Node text2 = e2.getChildNodes().item(0);
-            //获取文本内容
-            System.out.println(text2.getNodeValue());
-            //设置文本内容值
-            text2.setNodeValue("2028-10-14");
+//            //对元素的操作跟xml的dom操作差不多
+//            //参考：https://www.w3school.com.cn/xmldom/dom_nodes_get.asp
+//            //设置值：签发机关
+//            //元素节点
+//            Element e1 = doc.getElementById("qfjg");
+//            //获取子节点：文本节点
+//            Node text1 = e1.getChildNodes().item(0);
+//            //获取文本内容
+//            System.out.println(text1.getNodeValue());
+//            //设置文本内容值
+//            text1.setNodeValue("南山区民政局");
+//
+//            //设置值：有效期限
+//            //元素节点
+//            Element e2 = doc.getElementById("yxqx");
+//            //获取子节点：文本节点
+//            Node text2 = e2.getChildNodes().item(0);
+//            //获取文本内容
+//            System.out.println(text2.getNodeValue());
+//            //设置文本内容值
+//            text2.setNodeValue("2028-10-14");
             
             PNGTranscoder t = new PNGTranscoder();
             TranscoderInput input = new TranscoderInput(doc);
