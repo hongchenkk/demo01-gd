@@ -1,4 +1,4 @@
-package com.godink.demo01.stream;
+package com.godink.demo01.java8;
 
 public interface Formula {
 	double calculate(int a);

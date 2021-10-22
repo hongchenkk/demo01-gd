@@ -1,4 +1,4 @@
-package com.godink.demo01.stream;
+package com.godink.demo01.java8;
 
 import java.util.ArrayList;
 import java.util.Collections;

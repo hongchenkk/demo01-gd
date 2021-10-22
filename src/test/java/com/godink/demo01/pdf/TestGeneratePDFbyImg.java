@@ -1,15 +1,18 @@
 package com.godink.demo01.pdf;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import com.godink.demo01.FileUtils;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -17,6 +20,8 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import cn.hutool.core.codec.Base64;
+import cn.hutool.core.codec.Base64Decoder;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
@@ -217,7 +222,55 @@ class TestGeneratePDFbyImg {
     void testGenBase64FromImg() throws Exception {
     	String imgPath = "D:\\tmp\\testpdf\\1.jpg";
     	String encodeBase64File = encodeBase64File(imgPath);
+    	FileUtils.writeToFile(encodeBase64File, "D:\\tmp\\testpdf\\1jpg.base64");
     	System.out.println(encodeBase64File);
+    }
+
+    
+    /**
+     * 从base64编码生成图片文件
+     * 针对格式的问题：
+     * 1.有的地方带以下格式：data:image/jpeg;base64,
+     * 2.有的则不带，统一去掉这个格式之后在处理
+     * 3.处理前，必须要去掉data:image/jpeg;base64, 不然转成图片是错误的
+     * */
+    @Test
+    void testGenImgFromBase64() throws Exception {
+    	String base64Path = "D:\\tmp\\testpdf\\1jpg.base64";
+    	String base64Str = FileUtils.readFile(base64Path);
+    	//解码为字节数组
+    	String imgPath = "D:\\tmp\\testpdf\\1_gen.jpg";
+    	byte[] imgb = Base64Decoder.decode(base64Str);
+    	//将字节数组存为文件
+    	FileOutputStream fops = new FileOutputStream(imgPath);
+    	fops.write(imgb);
+    	fops.close();
+    }
+    
+    /**
+     * 从base64编码（带data:image/jpeg;base64,）生成图片文件
+     * 针对格式的问题：
+     * 1.有的地方带以下格式：data:image/jpeg;base64,
+     * 2.有的则不带，统一去掉这个格式之后在处理
+     * 3.处理前，必须要去掉data:image/jpeg;base64, 不然转成图片是错误的
+     * */
+    @Test
+    void testGenImgFromBase64WithInfo() throws Exception {
+    	String base64Path = "D:\\tmp\\testpdf\\1jpg.base64";
+    	String base64Str = FileUtils.readFile(base64Path);
+    	StringBuilder sb = new StringBuilder("data:image/jpeg;base64,");
+    	sb.append(base64Str);
+    	//解码为字节数组
+    	String imgPath = "D:\\tmp\\testpdf\\2_gen.jpg";
+    	byte[] imgb = Base64Decoder.decode(sb.toString());
+    	
+    	//字节组数转输入流
+//    	InputStream input = new ByteArrayInputStream(imgb);
+    	
+    	//将字节数组存为文件
+    	FileOutputStream fops = new FileOutputStream(imgPath);
+    	fops.write(imgb);
+    	fops.close();
     }
 
 }
