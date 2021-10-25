@@ -22,6 +22,13 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 		<poi.version>4.1.2</poi.version>
 	</properties>
+	
+	<repositories>
+	    <repository>
+	        <id>com.e-iceblue</id>
+	        <url>https://repo.e-iceblue.cn/repository/maven-public/</url>
+	    </repository>
+	</repositories>
 
 	<dependencies>
 		<dependency>
@@ -254,7 +261,13 @@
             <version>5.0.6</version>
         </dependency>
 	   	<!-- html生成图片工具end -->
-
+	   	
+		<dependency>
+		  <groupId>org.ofdrw</groupId>
+		  <artifactId>ofdrw-full</artifactId>
+		  <version>1.16.0</version>
+		</dependency>
+	   	
 	</dependencies>
 
 	<build>

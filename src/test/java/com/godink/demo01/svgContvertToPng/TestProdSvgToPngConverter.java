@@ -46,21 +46,21 @@ class TestProdSvgToPngConverter {
 	
 	/**
      * batik通过读取svg文件的方式转png
-     * @param filePath 传入读取的svg文件
+     * @param svgPath 传入读取的svg文件
      * @param pngFilePath 转换后的png图片
      * @param map 更改svg属性的集合 传值规则，id,name,value 主要是更改svg子节点的颜色属性值。
      *                        如果需要改变svg的多个element的颜色属性 则命名规范为 id1,name1,value1,id2,name2,value2....依次类推
      * @throws IOException
      * @throws TranscoderException
      */
-    public static void convertToPngByFile(String filePath, String pngFilePath, Map<String, String> map)
+    public static void convertToPngByFile(String svgPath, String pngFilePath, Map<String, String> map)
             throws IOException, TranscoderException {
         File file = new File(pngFilePath);
         FileOutputStream outputStream = null;
         try {
             file.createNewFile();
             outputStream = new FileOutputStream(file);
-            convertToPngByFile(filePath, outputStream,map);
+            convertToPngByFile(svgPath, outputStream,map);
         } finally {
             if (outputStream != null) {
                 try {
@@ -72,10 +72,10 @@ class TestProdSvgToPngConverter {
         }
     }
 
-    public static void convertToPngByFile(String path, OutputStream outputStream,Map<String, String> map)
+    public static void convertToPngByFile(String svgPath, OutputStream outputStream,Map<String, String> map)
             throws TranscoderException, IOException {
         try {
-            File file = new File(path);
+            File file = new File(svgPath);
             String parser = XMLResourceDescriptor.getXMLParserClassName();
             SAXSVGDocumentFactory f = new SAXSVGDocumentFactory(parser);
             Document doc = f.createDocument(file.toURI().toString());
