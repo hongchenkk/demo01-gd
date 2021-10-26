@@ -2,9 +2,11 @@ package com.godink.demo01.classpathFile;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.util.stream.Collectors;
 
@@ -62,6 +64,31 @@ class TestReadClasspathFile {
 		Resource res = applicationContext.getResource("classpath:doc/test1.txt");
 		File file = res.getFile();
 		log.info("file name:{}", file.getName());
+	}
+	
+	//通过类加载器的其他方法1
+	@Test
+	void testReadTxtFile5() throws IOException {
+		InputStream is = this.getClass().getClassLoader().getResourceAsStream("doc/test1.txt");
+		//将is转为字符流
+		InputStreamReader ir = new InputStreamReader(is);
+		//ir转为缓冲流
+		BufferedReader br = new BufferedReader(ir);
+		String collect = br.lines().collect(Collectors.joining("-"));
+		log.info("collect:{}", collect);
+	}
+	
+	//通过类加载器的其他方法2
+	@Test
+	void testReadTxtFile6() throws IOException {
+		URL url = this.getClass().getClassLoader().getResource("doc/test1.txt");
+		//将is转为字符流
+		InputStream is = new FileInputStream(new File(url.getFile()));
+		InputStreamReader ir = new InputStreamReader(is);
+		//ir转为缓冲流
+		BufferedReader br = new BufferedReader(ir);
+		String collect = br.lines().collect(Collectors.joining("-"));
+		log.info("collect:{}", collect);
 	}
 	
 	//测试获取File及inputstream流，通过资源对象Resource
