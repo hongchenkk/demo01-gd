@@ -1,7 +1,5 @@
 package com.godink.demo01.htmlToPng;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
@@ -13,7 +11,7 @@ import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
 
-import com.godink.demo01.FileUtils;
+import com.godink.springboot.common.demo.utils.FileUtils;
 
 import cn.hutool.core.codec.Base64;
 import gui.ava.html.image.generator.HtmlImageGenerator;

@@ -25,12 +25,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 class TestReadClasspathFile {
-	
-	@Autowired
-	private ResourceLoader resourceLoader;
-	
-	@Autowired
-	private ApplicationContext applicationContext;
 
 	//手动获取
 	@Test
@@ -48,23 +42,23 @@ class TestReadClasspathFile {
 		log.info("file name:{}", file.getName());
 	}
 	
-	//通过导入资源加载器加载
-	//这种方式需要通过集成测试，启动容器才可以
-	@Test
-	void testReadTxtFile3() throws IOException {
-		Resource res = resourceLoader.getResource("doc/test1.txt");
-		File file = res.getFile();
-		log.info("file name:{}", file.getName());
-	}
-	
-	//通过应用上下文加载
-	//这种方式需要通过集成测试，启动容器才可以
-	@Test
-	void testReadTxtFile4() throws IOException {
-		Resource res = applicationContext.getResource("classpath:doc/test1.txt");
-		File file = res.getFile();
-		log.info("file name:{}", file.getName());
-	}
+//	//通过导入资源加载器加载
+//	//这种方式需要通过集成测试，启动容器才可以
+//	@Test
+//	void testReadTxtFile3() throws IOException {
+//		Resource res = resourceLoader.getResource("doc/test1.txt");
+//		File file = res.getFile();
+//		log.info("file name:{}", file.getName());
+//	}
+//	
+//	//通过应用上下文加载
+//	//这种方式需要通过集成测试，启动容器才可以
+//	@Test
+//	void testReadTxtFile4() throws IOException {
+//		Resource res = applicationContext.getResource("classpath:doc/test1.txt");
+//		File file = res.getFile();
+//		log.info("file name:{}", file.getName());
+//	}
 	
 	//通过类加载器的其他方法1
 	@Test

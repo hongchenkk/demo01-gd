@@ -1,21 +1,17 @@
 package com.godink.demo01.htmlToPng;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
 import org.junit.jupiter.api.Test;
 
-import com.godink.demo01.FileUtils;
-import com.godink.springboot.common.demo.utils.FileToBase64;
+import com.godink.springboot.common.demo.utils.FileUtils;
 
 import cn.hutool.core.codec.Base64;
 import gui.ava.html.image.generator.HtmlImageGenerator;

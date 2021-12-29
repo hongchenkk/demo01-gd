@@ -1,26 +1,22 @@
 package com.godink.demo01.pdf;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import com.godink.demo01.FileUtils;
-import com.itextpdf.text.BadElementException;
+import com.godink.springboot.common.demo.utils.FileUtils;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import cn.hutool.core.codec.Base64;
 import cn.hutool.core.codec.Base64Decoder;
 import lombok.extern.slf4j.Slf4j;
 import sun.misc.BASE64Decoder;
