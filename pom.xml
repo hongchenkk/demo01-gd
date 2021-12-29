@@ -50,6 +50,7 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
 		<!-- 使用junit4测试工具 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -62,6 +63,26 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- 集成log4j2日志 start-->
+		<!-- 整合log4j2需要排除此依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- 集成log4j2作为日志框架需要此包 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		<!-- 集成log4j2日志 end-->
 		
 		<!-- 测试pdf的生成 start -->
 		<dependency>
