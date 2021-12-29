@@ -60,6 +60,11 @@ class TestGuavaCache {
 		log.info("get from db: {}", fromDb);
 		String fromDbCache = cache.getIfPresent("a14");
 		log.info("get from cache from db: {}", fromDbCache);
+		//删除缓存
+		cache.invalidate("a14");
+		String deleted = cache.getIfPresent("a14");
+		log.info("get from cache for deleted: {}", deleted);
+
 
 	}
 	
