@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.util.FileCopyUtils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +26,19 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 class TestReadClasspathFile {
+	
+	//推荐这种，解决了本地开发环境中能读到而linux中jar包读取不到文件的问题
+	//通过类加载器获取类路径下的文件为流，转为字符串
+	//参考链接：https://blog.csdn.net/Nile_Holmes/article/details/113091421
+	@Test
+	void testReadTxtFileGood() throws IOException {
+		InputStream ins = this.getClass().getClassLoader().getResourceAsStream("doc/test1.txt");
+		//使用spring自带的帮助类，转为字节数组
+		byte[] bytes = FileCopyUtils.copyToByteArray(ins);
+		//转成字符串
+		String content = new String(bytes, 0, bytes.length);
+		log.info("file content:{}", content);
+	}
 
 	//手动获取
 	@Test
@@ -96,6 +110,7 @@ class TestReadClasspathFile {
 		//将字节数组转为字符串输出
 		String string = new String(bytes, 0, bytes.length);
 		log.info("content:{}", string);
+		System.out.println(string);
 		
 		//2.获取inputstream
 		InputStream is = res.getInputStream();
